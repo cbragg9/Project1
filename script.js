@@ -1,111 +1,147 @@
-<<<<<<< HEAD
-document.addEventListener("click", function () {
-  document.getElementById("add-btn").innerHTML = "Hello World!";
-});
-document.addEventListener("click", function () {
-  document.getElementById("search-btn").innerHTML = "Hello World!";
-});
-=======
-$(document).ready(function(){ 
+//document.addEventListener("click", function () {
+//document.getElementById("add-btn").innerHTML = "Hello World!";
+//});
+//document.addEventListener("click", function () {
+//document.getElementById("search-btn").innerHTML = "Hello World!";
+//});
 
-  // U.S. DEPARTMENT OF AGRICULTURE 
-  // FoodData Central API 
+// When a food ingredient button is clicked
+$("#search").on("click", function () {
+  // The button title will be the query food
+  var ingredientQuery = $(this).text();
 
-  // When a food ingredient button is clicked
-  $(".button").on("click", function() {
+  // Settings for AJAX call
+  var fdc_api_key = "RlTgUNeWpu2FIFPDd0AmRrHssiC7e96O5TKQSGEc";
+  var dataType = "Branded";
+  var settings = {
+    async: true,
+    crossDomain: true,
+    url:
+      "https://api.nal.usda.gov/fdc/v1/foods/search?api_key=" +
+      fdc_api_key +
+      "&query=" +
+      ingredientQuery +
+      "&dataType=" +
+      dataType,
+    method: "GET",
+  };
 
-    // The button title will be the query food
-    var ingredientQuery = $(this).text();
+  // Ajax call
+  $.ajax(settings).done(function (response) {
+    // Update HTML to display what was searched
+    console.log(response);
+    var firstFoodReturned = response.foods[0].description;
+    $("#ingredient-name").text("Nutrition info for: " + firstFoodReturned);
 
-    // Settings for AJAX call
-    var fdc_api_key = "RlTgUNeWpu2FIFPDd0AmRrHssiC7e96O5TKQSGEc";
-    var dataType = "Branded"
-    var settings = {
-      "async": true,
-      "crossDomain": true,
-      "url": "https://api.nal.usda.gov/fdc/v1/foods/search?api_key=" + fdc_api_key + "&query=" + ingredientQuery + "&dataType=" + dataType,
-      "method": "GET",
+    var nutrientValue = "";
+
+    // Information for nutrients that will be displayed
+    var nutrientsArray = [
+      {
+        nutrientName: "Energy",
+        nutrientHTML: "#calories-tag",
+        nutrientDisplay: "Calories: ",
+        nutrientExists: "false",
+      },
+      {
+        nutrientName: "Protein",
+        nutrientHTML: "#protein-tag",
+        nutrientDisplay: "Protein: ",
+        nutrientExists: "false",
+      },
+      {
+        nutrientName: "Carbohydrate, by difference",
+        nutrientHTML: "#carbs-tag",
+        nutrientDisplay: "Carbs: ",
+        nutrientExists: "false",
+      },
+      {
+        nutrientName: "Sugars, total including NLEA",
+        nutrientHTML: "#sugars-tag",
+        nutrientDisplay: "Sugar: ",
+        nutrientExists: "false",
+      },
+      {
+        nutrientName: "Total lipid (fat)",
+        nutrientHTML: "#fat-tag",
+        nutrientDisplay: "Fat: ",
+        nutrientExists: "false",
+      },
+      {
+        nutrientName: "Fiber, total dietary",
+        nutrientHTML: "#fiber-tag",
+        nutrientDisplay: "Fiber: ",
+        nutrientExists: "false",
+      },
+      {
+        nutrientName: "Cholesterol",
+        nutrientHTML: "#cholesterol-tag",
+        nutrientDisplay: "Cholesterol: ",
+        nutrientExists: "false",
+      },
+    ];
+
+    // Loop through food nutrients array for the first food item from the response
+    for (var i = 0; i < response.foods[0].foodNutrients.length; i++) {
+      updateNutrient();
     }
 
-    // Ajax call
-    $.ajax(settings).done(function (response) {
+    // Updates the HTML tags for each nutrient
+    function updateNutrient() {
+      for (var j = 0; j < nutrientsArray.length; j++) {
+        var currentNutrientName = nutrientsArray[j].nutrientName;
+        var currentNutrientDisplay = nutrientsArray[j].nutrientDisplay;
+        var currentNutrientHTML = nutrientsArray[j].nutrientHTML;
 
-      // Update HTML to display what was searched
-      var firstFoodReturned = response.foods[0].description;
-      $("#ingredient-name").text("Nutrition info for: " + firstFoodReturned);
+        // Update the corresponding HTML with the current nutrient info
+        if (
+          response.foods[0].foodNutrients[i].nutrientName ===
+          currentNutrientName
+        ) {
+          nutrientValue = response.foods[0].foodNutrients[i].value;
+          nutrientsArray[j].nutrientExists = "true";
 
-      var nutrientValue = "";
-
-      // Information for nutrients that will be displayed
-      var nutrientsArray = [
-        {"nutrientName": "Energy",
-        "nutrientHTML": "#calories-tag",
-        "nutrientDisplay": "Calories: ",
-        "nutrientExists": "false"},
-        {"nutrientName": "Protein",
-        "nutrientHTML": "#protein-tag",
-        "nutrientDisplay": "Protein: ",
-        "nutrientExists": "false"},
-        {"nutrientName": "Carbohydrate, by difference",
-        "nutrientHTML": "#carbs-tag",
-        "nutrientDisplay": "Carbs: ",
-        "nutrientExists": "false"},
-        {"nutrientName": "Sugars, total including NLEA",
-        "nutrientHTML": "#sugars-tag",
-        "nutrientDisplay": "Sugar: ",
-        "nutrientExists": "false"},
-        {"nutrientName": "Total lipid (fat)",
-        "nutrientHTML": "#fat-tag",
-        "nutrientDisplay": "Fat: ",
-        "nutrientExists": "false"},
-        {"nutrientName": "Fiber, total dietary",
-        "nutrientHTML": "#fiber-tag",
-        "nutrientDisplay": "Fiber: ",
-        "nutrientExists": "false"},
-        {"nutrientName": "Cholesterol",
-        "nutrientHTML": "#cholesterol-tag",
-        "nutrientDisplay": "Cholesterol: ",
-        "nutrientExists": "false"}
-      ];
-
-
-      // Loop through food nutrients array for the first food item from the response
-      for (var i = 0; i < response.foods[0].foodNutrients.length; i++) {
-        updateNutrient();
-      } 
-
-      // Updates the HTML tags for each nutrient
-      function updateNutrient() {
-        for (var j = 0; j < nutrientsArray.length; j++) {
-          var currentNutrientName = nutrientsArray[j].nutrientName;
-          var currentNutrientDisplay = nutrientsArray[j].nutrientDisplay;
-          var currentNutrientHTML = nutrientsArray[j].nutrientHTML;
-  
-          // Update the corresponding HTML with the current nutrient info
-          if (response.foods[0].foodNutrients[i].nutrientName === currentNutrientName) {
-            nutrientValue = response.foods[0].foodNutrients[i].value;
-            nutrientsArray[j].nutrientExists = "true";
-
-            // Add units if the nutrient is not calories
-            if (currentNutrientName === "Energy") {
-              $(currentNutrientHTML).text(currentNutrientDisplay + nutrientValue + " kcal");
-            } else if (currentNutrientName === "Cholesterol") {
-              $(currentNutrientHTML).text(currentNutrientDisplay + nutrientValue + " mg");
-            } else {
-              $(currentNutrientHTML).text(currentNutrientDisplay + nutrientValue + " g");
-            }
-
-            // Display N/A if nutrient is not found in API response
-          } else if (nutrientsArray[j].nutrientExists === "false") {
-            $(currentNutrientHTML).text(currentNutrientDisplay + "N/A");
+          // Add units if the nutrient is not calories
+          if (currentNutrientName === "Energy") {
+            $(currentNutrientHTML).text(
+              currentNutrientDisplay + nutrientValue + " kcal"
+            );
+          } else if (currentNutrientName === "Cholesterol") {
+            $(currentNutrientHTML).text(
+              currentNutrientDisplay + nutrientValue + " mg"
+            );
+          } else {
+            $(currentNutrientHTML).text(
+              currentNutrientDisplay + nutrientValue + " g"
+            );
           }
+
+          // Display N/A if nutrient is not found in API response
+        } else if (nutrientsArray[j].nutrientExists === "false") {
+          $(currentNutrientHTML).text(currentNutrientDisplay + "N/A");
         }
       }
-
-    });
-
-  })
-
+    }
+  });
+});
+// Created button that will display into pantry list box when a user submits
+// an ingredient.
+$("#pantrySearchBtn").on("click", function createBtn() {
+  var userInput = document.getElementById("pantryText").value;
+  var pantryInput = document.createElement("button");
+  pantryInput.setAttribute(
+    "class",
+    "button new-ingredient-button is-primary is-light"
+  );
+  pantryInput.setAttribute("id", "pantryListBtn");
+  pantryInput.textContent = userInput;
+  document.getElementById("prepend-ingredients-here").appendChild(pantryInput);
+});
+// Created event handler for clear all button that will clear all ingredients buttons
+// from pantry list
+$("#clearAllBtn").on("click", function () {
+  var clearBtn = document.getElementById("pantryListBtn");
+  clearBtn.remove();
 });
 
 // // Recipe puppy
@@ -126,7 +162,7 @@ $(document).ready(function(){
 //   var recipePuppyResponse = JSON.parse(response);
 //   console.log(recipePuppyResponse);
 
-//   // List all ingredients 
+//   // List all ingredients
 //   for (var i = 0; i < recipePuppyResponse.results.length; i++) {
 
 //     // Get title and remove carriage returns
@@ -135,4 +171,3 @@ $(document).ready(function(){
 //   }
 
 // });
->>>>>>> master
