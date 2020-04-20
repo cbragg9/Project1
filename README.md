@@ -13,13 +13,14 @@ Deployed URL: https://cbragg9.github.io/Recipe-Master/
 
 Created by: Chris Bragg, Sveta Demkovich, Daniel Villarroel  
 
-![Demo-Gif](recipe-gif.gif)  
+![Demo-Gif](https://media.giphy.com/media/jTkhRYlE4NuXmkAegg/giphy.gif)  
 
 ## Latest Commit  
--Modified ReadMe  
--Added PPT presentation  
+-Modified demo gif link  
 
 ## Previous commits  
+-Modified ReadMe  
+-Added PPT presentation  
 -Modified front end for recipe card and ingredient sections  
 -Additional pantry search error handling  
 -Added recipe card functionality  
