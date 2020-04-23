@@ -128,26 +128,11 @@ $(document).ready(function () {
       createBtn();
       return false;
     });
-    // if (userInput.value != "" || userInput.value != null){
 
-    // var pantryInput = document.createElement("button");
-    //   pantryInput.setAttribute(
-    //   "class",
-    // "button new-ingredient-button is-danger is-light is-rounded"
-    //);
-    //pantryInput.setAttribute("id", "pantryListBtn");
-    //pantryInput.textContent = userInput.value;
-    //document
-    //.getElementById("prepend-ingredients-here")
-    //.appendChild(pantryInput);
-    // $("#pantryText").val("");
-    // }
     if (userInput.value == "" || userInput.value == null) {
-      //alert("enter an ingredient");
       return false;
     } else {
-      //var buttonsList = document.createElement("ul");
-      //document.getElementById("prepend-ingredients-here").append(buttonsList);
+
       var pantryInput = document.createElement("button");
       pantryInput.setAttribute(
         "class",
@@ -161,11 +146,7 @@ $(document).ready(function () {
       $("#pantryText").val("");
     }
   });
-  // function validSubmit () {
-  //  if (userInput.value == "" || userInput.value == null) {
-  //     alert("enter an ingredient");
-  //    return false;
-  //}}
+
 
   // Created event handler for clear all button that will clear all ingredients buttons
   // from pantry list
@@ -226,10 +207,11 @@ $(document).ready(function () {
         }
         var recipeLink = recipePuppyResponse.results[i].href;
 
-        renderrecipe();
+        renderRecipe();
       }
 
-      function renderrecipe() {
+      function renderRecipe() {
+
         //Create Column div for Card
         var recipeCardColumn = $("<div>");
         recipeCardColumn.addClass("column is-3");

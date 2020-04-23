@@ -32,33 +32,49 @@ body {
   margin-right: 15px;
 }
 
-#recipe-cards-div {
-  color: white;
-  background-size: cover;
-  background-image: url(./docs/grunge-wooden-cutting-board-with-copy-space-design-make-food-background_3249-3466.jpg);
-  border: whitesmoke solid 3px;
-  padding: 70px;
+#ingredient-wrapper {
+    color: white;
+    background-image: url(./docs/ingredients.jpg);
+    background-size: cover;
 }
+
+#recipe-cards-section {
+    color: white;
+    /* background-size: cover; */
+    /* background-image: url(./docs/grunge-wooden-cutting-board-with-copy-space-design-make-food-background_3249-3466.jpg); */
+    border: whitesmoke solid 3px; 
+    padding: 150px 0px;
+}
+
+#recipe-wrapper {
+  background-image: url(./docs/grunge-wooden-cutting-board-with-copy-space-design-make-food-background_3249-3466.jpg);
+  background-size: cover;
+}
+
+#ingredient-section {
+    color: white;
+    border: whitesmoke solid 3px;
+    padding: 150px 0px;
+}
+
+.ingredient-title {
+    margin-bottom: 5%;
+}
+
 #pick-recipe {
   color: white;
   font-family: "Lato", sans-serif;
   margin-bottom: 20px;
 }
+
 .column.is-11 {
   width: auto;
   margin-left: 0px 20px;
 }
+
 .card {
   border-style: outset;
   border-color: white;
-}
-
-#ingredients-section {
-  color: white;
-  background-image: url(./docs/ingredients.jpg);
-  background-size: cover;
-  border: whitesmoke solid 3px;
-  padding: 100px 0px;
 }
 
 /* Contains Recipe Master title  */
@@ -151,9 +167,9 @@ body {
 
 /* Creates margin for smaller screens between pantry and recipe section */
 @media screen and (max-width: 768px) {
-  #recipe-cards-section {
-    margin-top: 40%;
-  }
+    #recipe-wrapper {
+        margin-top: 50%;
+    }
 }
 .card-content {
   height: 95px;
@@ -167,7 +183,7 @@ body {
 
 /* No top margin for larger screens between pantry and recipe sections */
 @media screen and (min-width: 769px) {
-  #recipe-cards-section {
-    margin-top: 0px;
-  }
+    #recipe-wrapper {
+        margin-top: 0px;
+    }
 }
