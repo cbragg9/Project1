@@ -254,10 +254,8 @@ $(document).ready(function () {
         var recipeCardTitle = $("<div>");
         recipeCardTitle.addClass("card-content");
         recipeCardTitle.attr("data-name", recipeTitle);
-        recipeCardTitle.attr(
-          "data-ingredients",
-          recipePuppyResponse.results[i].ingredients
-        );
+        recipeCardTitle.attr("data-ingredients",
+        recipePuppyResponse.results[i].ingredients);
         recipeCardTitle.text(recipeTitle);
         //Append child class into parent and into HTML
         recipeCard.append(recipeCardImage, recipeCardTitle);
