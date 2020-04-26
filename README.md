@@ -1,24 +1,44 @@
-# Project1  
-User Story  
+# Recipe Master  
+
+Deployed URL: https://cbragg9.github.io/Recipe-Master/  
+
+# User Story  
 As a user, I want to make meals with the food I have at home, so that I can save  money, reduce waste, and eat healthy.   
 
-Description: Recipe Master allows a user to enter ingredients they have at home into a "Pantry List".  
+# Project Description  
+Recipe Master allows a user to enter ingredients they have at home into a "Pantry List".  
 Using these ingredients, the user will  search for 4  recipe's at a time from Recipe Puppy API that  
 will be displayed in Bulma cards. Clicking on a recipe will both take you to the recipe URL and display  
 the ingredients of the recipe. Ingredients that the user has on the pantry list will  be highlighted  
 green, while ingredients the user doesn't have will be highlighted red. Clicking on any ingredient will  
 bring up the nutrition info provided by the USDA Food Data API.  
 
-Deployed URL: https://cbragg9.github.io/Recipe-Master/  
 
 Created by: Chris Bragg, Sveta Demkovich, Daniel Villarroel  
 
 ![Demo-Gif](https://media.giphy.com/media/jTkhRYlE4NuXmkAegg/giphy.gif)  
 
+# API's consumed
+-Recipe Puppy  
+-U.S. Department of Agriculture FoodData Central  
+
+# Wireframe  
+![image info](./docs/wireframe-preview.jpg)
+
+# Breakdown of Tasks  
+-Chris: Front end except recipe section, nutrition API functionality  
+-Sveta: Recipe API functionality using pantry list ingredients, recipe section front end work  
+-Daniel: Pantry search submit and clear functionality  
+
+# Links  
+[Presentation](./recipePPT.pptx)  
+[Project proposal](https://drive.google.com/open?id=15hsFwbAiv-9XK9aorcIa0fySlPHRG8v8wnyfxlYu3Bc)  
+
 ## Latest Commit  
--Modified demo gif link  
+-Updated ReadMe to add more project details    
 
 ## Previous commits  
+-Modified demo gif link  
 -Modified ReadMe  
 -Added PPT presentation  
 -Modified front end for recipe card and ingredient sections  
